@@ -95,10 +95,7 @@ def terminate():
 
 
 def start_screen():
-    intro_text = ["ЗАСТАВКА", "",
-                  "Правила игры",
-                  "Если в правилах несколько строк,",
-                  "приходится выводить их построчно"]
+    intro_text = ["PACMAN"]
 
     fon = pygame.transform.scale(load_image('images/fon.png'), (width, height))
     screen.blit(fon, (0, 0))
@@ -124,7 +121,7 @@ def start_screen():
         clock.tick(fps)
 
 
-mapp = load_level('map.txt')
+mapp = load_level('map_lvl.txt')
 start_screen()
 while running:
     for event in pygame.event.get():
