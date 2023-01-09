@@ -3,7 +3,7 @@ import os
 import sys
 
 pygame.init()
-size = width, height = 500, 500
+size = width, height = 1920, 1080
 screen = pygame.display.set_mode(size)
 clock = pygame.time.Clock()
 fps = 60
@@ -57,14 +57,14 @@ class Player(pygame.sprite.Sprite):
         super().__init__(player_group, all_sprites)
         self.image = player_image
         self.rect = self.image.get_rect().move(
-            tile_width * pos_x + 15, tile_height * pos_y + 5)
+            tile_width * pos_x + 9, tile_height * pos_y + 3)
         self.pos = pos_x, pos_y
 
     def move(self, x, y):
         self.pos = x, y
 
         self.rect = self.image.get_rect().move(
-            tile_width * self.pos[0] + 15, tile_height * self.pos[1] + 5)
+            tile_width * self.pos[0] + 9, tile_height * self.pos[1] + 3)
     #
     # def pos(self):
 
@@ -72,19 +72,20 @@ class Player(pygame.sprite.Sprite):
 player = None
 
 tile_images = {
-    'wall': load_image('box.png'),
-    'empty': load_image('grass.png')
+    'wall': load_image('images/block.png'),
+    'point': load_image('images/point.png'),
+    'empty': load_image('images/background.png')
 }
-player_image = load_image('mario.png')
+player_image = load_image('images/pacman.png')
 
-tile_width = tile_height = 50
+tile_width = tile_height = 30
 
 # группы спрайтов
 all_sprites = pygame.sprite.Group()
 tiles_group = pygame.sprite.Group()
 player_group = pygame.sprite.Group()
 
-player, lvl_x, lvl_y = generate_level(load_level('map.txt'))
+player, lvl_x, lvl_y = generate_level(load_level('map_lvl.txt'))
 running = True
 
 
@@ -99,7 +100,7 @@ def start_screen():
                   "Если в правилах несколько строк,",
                   "приходится выводить их построчно"]
 
-    fon = pygame.transform.scale(load_image('fon.jpg'), (width, height))
+    fon = pygame.transform.scale(load_image('images/fon.png'), (width, height))
     screen.blit(fon, (0, 0))
     font = pygame.font.Font(None, 30)
     text_coord = 50
