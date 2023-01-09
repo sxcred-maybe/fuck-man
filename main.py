@@ -19,7 +19,7 @@ def load_image(name, colorkey=None):
     return image
 
 
-def load_level(self, filename='map.txt'):
+def load_level(self, filename='map_lvl.txt'):
     with open(filename, 'r') as mapFile:
         level_map = [line.strip() for line in mapFile]
 
@@ -72,10 +72,10 @@ class Player(pygame.sprite.Sprite):
 player = None
 
 tile_images = {
-    'wall': load_image('box.png'),
-    'empty': load_image('grass.png')
+    'wall': load_image('block.png'),
+    'empty': load_image('background.png')
 }
-player_image = load_image('mario.png')
+player_image = load_image('pacman.png')
 
 tile_width = tile_height = 50
 
@@ -84,7 +84,7 @@ all_sprites = pygame.sprite.Group()
 tiles_group = pygame.sprite.Group()
 player_group = pygame.sprite.Group()
 
-player, lvl_x, lvl_y = generate_level(load_level('map.txt'))
+player, lvl_x, lvl_y = generate_level(load_level('map_lvl.txt'))
 running = True
 
 
@@ -95,11 +95,11 @@ def terminate():
 
 def start_screen():
     intro_text = ["ЗАСТАВКА", "",
-                  "Правила игры",
-                  "Если в правилах несколько строк,",
-                  "приходится выводить их построчно"]
+                  "Правила игры:",
+                  "Pacman",
+                  "беги от привидений"]
 
-    fon = pygame.transform.scale(load_image('fon.jpg'), (width, height))
+    fon = pygame.transform.scale(load_image('zastavka.jpg'), (width, height))
     screen.blit(fon, (0, 0))
     font = pygame.font.Font(None, 30)
     text_coord = 50
