@@ -3,7 +3,7 @@ import os
 import sys
 
 pygame.init()
-size = width, height = 500, 500
+size = width, height = 1920, 1080
 screen = pygame.display.set_mode(size)
 clock = pygame.time.Clock()
 fps = 60
@@ -57,14 +57,14 @@ class Player(pygame.sprite.Sprite):
         super().__init__(player_group, all_sprites)
         self.image = player_image
         self.rect = self.image.get_rect().move(
-            tile_width * pos_x + 15, tile_height * pos_y + 5)
+            tile_width * pos_x + 9, tile_height * pos_y + 3)
         self.pos = pos_x, pos_y
 
     def move(self, x, y):
         self.pos = x, y
 
         self.rect = self.image.get_rect().move(
-            tile_width * self.pos[0] + 15, tile_height * self.pos[1] + 5)
+            tile_width * self.pos[0] + 9, tile_height * self.pos[1] + 3)
     #
     # def pos(self):
 
@@ -72,12 +72,13 @@ class Player(pygame.sprite.Sprite):
 player = None
 
 tile_images = {
-    'wall': load_image('block.png'),
-    'empty': load_image('background.png')
+    'wall': load_image('images/block.png'),
+    'point': load_image('images/point.png'),
+    'empty': load_image('images/background.png')
 }
-player_image = load_image('pacman.png')
+player_image = load_image('images/pacman.png')
 
-tile_width = tile_height = 50
+tile_width = tile_height = 30
 
 # группы спрайтов
 all_sprites = pygame.sprite.Group()
@@ -94,12 +95,9 @@ def terminate():
 
 
 def start_screen():
-    intro_text = ["ЗАСТАВКА", "",
-                  "Правила игры:",
-                  "Pacman",
-                  "беги от привидений"]
+    intro_text = ["PACMAN"]
 
-    fon = pygame.transform.scale(load_image('zastavka.jpg'), (width, height))
+    fon = pygame.transform.scale(load_image('images/fon.png'), (width, height))
     screen.blit(fon, (0, 0))
     font = pygame.font.Font(None, 30)
     text_coord = 50
@@ -123,7 +121,7 @@ def start_screen():
         clock.tick(fps)
 
 
-mapp = load_level('map.txt')
+mapp = load_level('map_lvl.txt')
 start_screen()
 while running:
     for event in pygame.event.get():
