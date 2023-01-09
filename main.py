@@ -42,14 +42,26 @@ def generate_level(level):
     for y in range(len(level)):
         for x in range(len(level[y])):
             if level[y][x] == '.':
-                Tile('empty', x, y)
+                new_Dot = Dot(x, y)
             elif level[y][x] == '#':
                 Tile('wall', x, y)
             elif level[y][x] == '@':
                 Tile('empty', x, y)
                 new_player = Player(x, y)
+            elif level[y][x] == '1':
+                Tile('empty', x, y)
+                new_Ghost1 = Ghost1(x, y)
+            elif level[y][x] == '2':
+                Tile('empty', x, y)
+                new_Ghost2 = Ghost2(x, y)
+            elif level[y][x] == '3':
+                Tile('empty', x, y)
+                new_Ghost3 = Ghost3(x, y)
+            elif level[y][x] == '4':
+                Tile('empty', x, y)
+                new_Ghost4 = Ghost4(x, y)
     # вернем игрока, а также размер поля в клетках
-    return new_player, x, y
+    return new_player, x, y, new_Ghost1, new_Ghost2, new_Ghost3, new_Ghost4, new_Dot
 
 
 class Player(pygame.sprite.Sprite):
@@ -69,7 +81,58 @@ class Player(pygame.sprite.Sprite):
     # def pos(self):
 
 
+class Ghost1(pygame.sprite.Sprite):
+    def __init__(self, pos_x, pos_y):
+        super().__init__(player_group, all_sprites)
+        self.image = ghost_image1
+        self.rect = self.image.get_rect().move(
+            tile_width * pos_x + 9, tile_height * pos_y + 3)
+        self.pos = pos_x, pos_y
+
+
+class Ghost2(pygame.sprite.Sprite):
+    def __init__(self, pos_x, pos_y):
+        super().__init__(player_group, all_sprites)
+        self.image = ghost_image2
+        self.rect = self.image.get_rect().move(
+            tile_width * pos_x + 9, tile_height * pos_y + 3)
+        self.pos = pos_x, pos_y
+
+
+class Ghost3(pygame.sprite.Sprite):
+    def __init__(self, pos_x, pos_y):
+        super().__init__(player_group, all_sprites)
+        self.image = ghost_image3
+        self.rect = self.image.get_rect().move(
+            tile_width * pos_x + 9, tile_height * pos_y + 3)
+        self.pos = pos_x, pos_y
+
+
+class Ghost4(pygame.sprite.Sprite):
+    def __init__(self, pos_x, pos_y):
+        super().__init__(player_group, all_sprites)
+        self.image = ghost_image4
+        self.rect = self.image.get_rect().move(
+            tile_width * pos_x + 9, tile_height * pos_y + 3)
+        self.pos = pos_x, pos_y
+
+
+class Dot(pygame.sprite.Sprite):
+    def __init__(self, pos_x, pos_y):
+        super().__init__(player_group, all_sprites)
+        self.image = Dot_image
+        self.rect = self.image.get_rect().move(
+            tile_width * pos_x + 9, tile_height * pos_y + 3)
+        self.pos = pos_x, pos_y
+
+
 player = None
+
+ghost1 = None
+ghost2 = None
+ghost3 = None
+ghost4 = None
+dot = None
 
 tile_images = {
     'wall': load_image('images/block.png'),
@@ -77,6 +140,11 @@ tile_images = {
     'empty': load_image('images/background.png')
 }
 player_image = load_image('images/pacman.png')
+ghost_image1 = load_image('images/blue_ghost.png')
+ghost_image2 = load_image('images/red_ghost.png')
+ghost_image3 = load_image('images/pink_ghost.png')
+ghost_image4 = load_image('images/yellow_ghost.png')
+Dot_image = load_image('images/point.png')
 
 tile_width = tile_height = 30
 
@@ -85,7 +153,7 @@ all_sprites = pygame.sprite.Group()
 tiles_group = pygame.sprite.Group()
 player_group = pygame.sprite.Group()
 
-player, lvl_x, lvl_y = generate_level(load_level('map_lvl.txt'))
+player, ghost1, ghost2, ghost3, ghost4, dot, lvl_x, lvl_y = generate_level(load_level('map_lvl.txt'))
 running = True
 
 
