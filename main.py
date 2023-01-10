@@ -45,7 +45,8 @@ def generate_level(level):
                 new_Dot = Dot(x, y)
             elif level[y][x] == '#':
                 Tile('wall', x, y)
-            elif level[y][x] == '@':
+            elif level[y][x] == '@':    # в следующих елифах у тебя тайлы empty мне кажется лучше поменять их на призраков с номерами
+                                        # и вообще стоит наверное назвать их по цвету
                 Tile('empty', x, y)
                 new_player = Player(x, y)
             elif level[y][x] == '1':
