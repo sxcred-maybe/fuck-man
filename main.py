@@ -147,7 +147,7 @@ ghost_image3 = load_image('images/pink_ghost.png')
 ghost_image4 = load_image('images/yellow_ghost.png')
 Dot_image = load_image('images/point.png')
 
-tile_width = tile_height = 30
+tile_width = tile_height = 40
 
 # группы спрайтов
 all_sprites = pygame.sprite.Group()
