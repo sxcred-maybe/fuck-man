@@ -70,14 +70,14 @@ class Player(pygame.sprite.Sprite):
         super().__init__(player_group, all_sprites)
         self.image = player_image
         self.rect = self.image.get_rect().move(
-            tile_width * pos_x + 9, tile_height * pos_y + 3)
+            tile_width * pos_x + 12, tile_height * pos_y + 4)
         self.pos = pos_x, pos_y
 
     def move(self, x, y):
         self.pos = x, y
 
         self.rect = self.image.get_rect().move(
-            tile_width * self.pos[0] + 9, tile_height * self.pos[1] + 3)
+            tile_width * self.pos[0] + 12, tile_height * self.pos[1] + 4)
     #
     # def pos(self):
 
@@ -87,7 +87,7 @@ class Ghost1(pygame.sprite.Sprite):
         super().__init__(player_group, all_sprites)
         self.image = ghost_image1
         self.rect = self.image.get_rect().move(
-            tile_width * pos_x + 9, tile_height * pos_y + 3)
+            tile_width * pos_x + 12, tile_height * pos_y + 4)
         self.pos = pos_x, pos_y
 
 
@@ -96,7 +96,7 @@ class Ghost2(pygame.sprite.Sprite):
         super().__init__(player_group, all_sprites)
         self.image = ghost_image2
         self.rect = self.image.get_rect().move(
-            tile_width * pos_x + 9, tile_height * pos_y + 3)
+            tile_width * pos_x + 12, tile_height * pos_y + 4)
         self.pos = pos_x, pos_y
 
 
@@ -105,7 +105,7 @@ class Ghost3(pygame.sprite.Sprite):
         super().__init__(player_group, all_sprites)
         self.image = ghost_image3
         self.rect = self.image.get_rect().move(
-            tile_width * pos_x + 9, tile_height * pos_y + 3)
+            tile_width * pos_x + 12, tile_height * pos_y + 4)
         self.pos = pos_x, pos_y
 
 
@@ -114,7 +114,7 @@ class Ghost4(pygame.sprite.Sprite):
         super().__init__(player_group, all_sprites)
         self.image = ghost_image4
         self.rect = self.image.get_rect().move(
-            tile_width * pos_x + 9, tile_height * pos_y + 3)
+            tile_width * pos_x + 12, tile_height * pos_y + 4)
         self.pos = pos_x, pos_y
 
 
@@ -123,7 +123,7 @@ class Dot(pygame.sprite.Sprite):
         super().__init__(player_group, all_sprites)
         self.image = Dot_image
         self.rect = self.image.get_rect().move(
-            tile_width * pos_x + 9, tile_height * pos_y + 3)
+            tile_width * pos_x + 12, tile_height * pos_y + 4)
         self.pos = pos_x, pos_y
 
 
